@@ -1,0 +1,5 @@
+springboot-sharding-jdbc-mybatis-rw/.idea
+springboot-sharding-jdbc-mybatis-rw/biz/target
+springboot-sharding-jdbc-mybatis-rw/common/target
+springboot-sharding-jdbc-mybatis-rw/service/target
+springboot-sharding-jdbc-mybatis-rw/controller/target

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ /*
+  ~  * Copyright (c) 2019. tdc.shangri-la.com. All Rights Reserved.
+  ~  */
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.toxic.anepoch.entitystore.service.mapper.EntityDetail0Mapper">
+	<resultMap id="entityDetail0ResultMap" type="com.toxic.anepoch.entitystore.service.model.EntityDetail0">
+        <result property="id" column="id"/>
+        <result property="entityId" column="entity_id"/>
+        <result property="version" column="version"/>
+        <result property="section" column="section"/>
+        <result property="data" column="data"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="EntityDetail0Columns">
+	    <![CDATA[
+		id,entity_id,version,section,data,create_date,update_time
+	    ]]>
+	</sql>
+
+
+	<sql id="limit">
+	<if test="_offset != null and _limit != null">
+			limit #{_offset}, #{_limit}
+		</if>
+		<if test="_offset == null and _limit != null">
+			limit #{_limit}
+		</if>
+		<if test="_offset == null and _limit == null">
+			<include refid="max_limit"/>
+		</if>
+	</sql>
+
+	<sql id="max_limit">
+		limit 500
+	</sql>
+
+	<sql id="orderby">
+		<choose>
+			<when test='_orderby != null'>
+				order by
+				<foreach collection="_orderby" item="item" index="index" separator=",">
+					${item}
+					</foreach>
+				</when>
+			<otherwise>
+				<include refid="orderById"/>
+				</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="orderById">
+		order by create_time desc
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO entity_detail_0
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id!=null">
+				id,
+			</if>
+			<if test="entityId!=null">
+				entity_id,
+			</if>
+			<if test="version!=null">
+				version,
+			</if>
+			<if test="section!=null">
+				section,
+			</if>
+			<if test="data!=null">
+				data,
+			</if>
+			<if test="createDate!=null">
+				create_date,
+			</if>
+			<if test="updateTime!=null">
+				update_time,
+			</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="id!=null">
+						#{id,jdbcType=BIGINT},
+				</if>
+				<if test="entityId!=null">
+						#{entityId,jdbcType=BIGINT},
+				</if>
+				<if test="version!=null">
+						#{version,jdbcType=INTEGER},
+				</if>
+				<if test="section!=null">
+						#{section,jdbcType=VARCHAR},
+				</if>
+				<if test="data!=null">
+						#{data,jdbcType=LONGVARCHAR},
+				</if>
+				<if test="createDate!=null">
+						#{createDate,jdbcType=TIMESTAMP},
+				</if>
+				<if test="updateTime!=null">
+						#{updateTime,jdbcType=TIMESTAMP}
+				</if>
+        </trim>
+	</insert>
+
+	<update id="update" >
+        UPDATE entity_detail_0 SET
+	        <if test="entityId!=null">
+	        entity_id = #{entityId,jdbcType=BIGINT} ,
+	        </if>
+	        <if test="version!=null">
+	        version = #{version,jdbcType=INTEGER} ,
+	        </if>
+	        <if test="section!=null">
+	        section = #{section,jdbcType=VARCHAR} ,
+	        </if>
+	        <if test="data!=null">
+	        data = #{data,jdbcType=LONGVARCHAR} ,
+	        </if>
+	        <if test="createDate!=null">
+	        create_date = #{createDate,jdbcType=TIMESTAMP} ,
+	        </if>
+	        <if test="updateTime!=null">
+	        update_time = #{updateTime,jdbcType=TIMESTAMP} ,
+	        </if>
+        WHERE 
+	        id = #{id} 
+	</update>
+
+	<!--逻辑删除记录-->
+	<delete id="delete">
+		UPDATE entity_detail_0 SET delete_flag = 1
+		<include refid="listEntityDetail0Where"/>
+	</delete>
+
+	<!--sql where查询条件定义-->
+	<sql id="listEntityDetail0Where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>      				
+				<if test="id!=null and id!=''">
+					AND id = #{id}
+				</if>
+				<if test="entityId!=null and entityId!=''">
+					AND entity_id = #{entityId}
+				</if>
+				<if test="version!=null and version!=''">
+					AND version = #{version}
+				</if>
+				<if test="section!=null and section!=''">
+					AND section = #{section}
+				</if>
+				<if test="data!=null and data!=''">
+					AND data = #{data}
+				</if>
+				<if test="createDate!=null and createDate!=''">
+					AND create_date = #{createDate}
+				</if>
+				<if test="updateTime!=null and updateTime!=''">
+					AND update_time = #{updateTime}
+				</if>
+		</where>
+	</sql>
+
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+
+	<!--全量查询-->
+    <select id="selectList" resultMap="entityDetail0ResultMap">
+    	SELECT <include refid="EntityDetail0Columns" /> FROM entity_detail_0
+		<include refid="listEntityDetail0Where"/>
+    </select>
+
+	<!--分页查询-->
+	<select id="selectListByPage"  resultMap="entityDetail0ResultMap" parameterType="java.util.HashMap">
+		SELECT
+		<include refid="EntityDetail0Columns" />
+		FROM entity_detail_0
+		<include refid="listEntityDetail0Where"/>
+		<include refid="orderby"/>
+		<include refid="limit"/>
+	</select>
+
+	<!--该方法适用于，获取的数据条数小于等于1 如有特殊需要自己实现-->
+	<select id="selectOne" resultMap="entityDetail0ResultMap">
+		SELECT <include refid="EntityDetail0Columns" />
+		FROM entity_detail_0
+		<include refid="listEntityDetail0Where"/>
+		limit 1
+	</select>
+
+	<!--根据条件获取record记录总数-->
+	<select id="getTotleCountByConditions" resultType="int">
+		SELECT count(*) FROM entity_detail_0
+		<include refid="listEntityDetail0Where"/>
+	</select>
+
+</mapper>
+
