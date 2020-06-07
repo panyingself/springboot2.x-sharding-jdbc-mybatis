@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>entity-store</artifactId>
+        <groupId>com.toxic.anepoch</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>entitystore.common</artifactId>
+
+
+    <dependencies>
+
+        <!--spring boot start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--通用包 start-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <!--jackson mybatis.mapper-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!--通用包 end-->
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--通用包 start-->
+        <dependency>
+            <groupId>com.toxic.anepoch</groupId>
+            <artifactId>toxic-common-utils</artifactId>
+            <scope>system</scope>
+            <version>1.0-SNAPSHOT</version>
+            <!--引用文件包打包方式-->
+            <systemPath>${project.basedir}/src/main/resources/lib/toxic-common-utils-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <!--通用包 start-->
+        <dependency>
+            <groupId>com.toxic.anepoch</groupId>
+            <artifactId>toxic-base-supom</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <!--引用文件包打包方式-->
+            <systemPath>${project.basedir}/src/main/resources/lib/toxic-base-supom-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+    </dependencies>
+</project>

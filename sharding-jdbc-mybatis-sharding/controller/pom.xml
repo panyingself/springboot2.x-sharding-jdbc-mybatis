@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>entity-store</artifactId>
+        <groupId>com.toxic.anepoch</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>entitystore.controller</artifactId>
+
+    <dependencies>
+        <!--springboot start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <!--springboot end-->
+
+        <!--module start-->
+        <dependency>
+            <groupId>com.toxic.anepoch</groupId>
+            <artifactId>entitystore.biz</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--module end-->
+
+    </dependencies>
+
+    <build>
+        <finalName>entity-store</finalName>
+        <plugins>
+            <!--springboot 打包-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--project jdk compire-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--如果不是达成war包,这段代码需要注释掉-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--<version>2.6</version>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash;如果想在没有web.xml文件的情况下构建WAR，请设置为false。&ndash;&gt;-->
+            <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
+        </plugins>
+
+    </build>
+
+</project>

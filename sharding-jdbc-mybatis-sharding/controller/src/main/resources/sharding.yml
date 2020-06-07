@@ -1,0 +1,43 @@
+#dataSource:
+#  ds_0: !!com.alibaba.druid.pool.DruidDataSource
+#    url: dbc:mysql://139.129.91.148:3306/entity_store_0?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: root
+#
+#tables:
+#  user:
+#    actualTables: entity_detail_${0..1}
+#    tableStrategy:
+#      shardingColumns: id
+#      algorithmExpression: entity_detail_${id.longValue() % 2}
+#
+#bindingTables:
+#  - tableNames: entity_detail_
+#
+##默认数据库分片策略
+#defaultDatabaseStrategy:
+#  shardingColumns: id
+#  algorithmExpression: ds_0
+#
+#props:
+#  sql.show: true
+
+ds:
+  master: !!com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://139.129.91.148:3306/entity_storage_0?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+        username: root
+        password: 111111
+
+  slave0: !!com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://139.129.91.148:3306/entity_storage_1?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+        username: root
+        password: 111111
+
+  slave1: !!com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://139.129.91.148:3306/entity_storage_2?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+        username: root
+        password: 111111
