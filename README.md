@@ -1,11 +1,13 @@
 # springboot-sharding-jdbc-mybatis
 springboot2.x 集成sharding-jdbc &amp; mybatis项目demo,基于sharding-jdbc maven版本:
 
+```
 <dependency>
     <groupId>org.apache.shardingsphere</groupId>
     <artifactId>sharding-jdbc-core</artifactId>
-    <version>${sharding-jdbc.version}</version>
+    <version>4.0.0</version>
 </dependency>
+```
 
 download开箱即用.
 
