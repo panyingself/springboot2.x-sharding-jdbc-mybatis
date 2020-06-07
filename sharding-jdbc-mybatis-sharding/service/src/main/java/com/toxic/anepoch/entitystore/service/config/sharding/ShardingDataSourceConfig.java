@@ -2,8 +2,6 @@ package com.toxic.anepoch.entitystore.service.config.sharding;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.apache.shardingsphere.api.config.masterslave.MasterSlaveRuleConfiguration;
-import org.apache.shardingsphere.api.config.sharding.KeyGeneratorConfiguration;
 import org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.TableRuleConfiguration;
 import org.apache.shardingsphere.api.config.sharding.strategy.InlineShardingStrategyConfiguration;
@@ -58,7 +56,6 @@ public class ShardingDataSourceConfig {
         // 配置分片规则
         ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
         shardingRuleConfig.setTableRuleConfigs(Lists.newArrayList(entityDetailTableRuleConfig));
-        shardingRuleConfig.setDefaultDataSourceName("ds0");
 
         // 获取数据源对象
         return ShardingDataSourceFactory.createDataSource(dataSourceMap, shardingRuleConfig, this.getProperties());

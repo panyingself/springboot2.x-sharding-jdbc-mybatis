@@ -59,7 +59,7 @@
 
 	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO entity_detail
+        INSERT INTO entity_detail_
         <trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id!=null">
 				id,
@@ -109,7 +109,7 @@
 	</insert>
 
 	<update id="update" >
-        UPDATE entity_detail SET
+        UPDATE entity_detail_ SET
 	        <if test="entityId!=null">
 	        entity_id = #{entityId,jdbcType=BIGINT} ,
 	        </if>
@@ -134,7 +134,7 @@
 
 	<!--逻辑删除记录-->
 	<delete id="delete">
-		UPDATE entity_detail SET delete_flag = 1
+		UPDATE entity_detail_ SET delete_flag = 1
 		<include refid="listEntityDetail0Where"/>
 	</delete>
 
@@ -173,7 +173,7 @@
 
 	<!--全量查询-->
     <select id="selectList" resultMap="entityDetail0ResultMap">
-    	SELECT <include refid="EntityDetail0Columns" /> FROM entity_detail
+    	SELECT <include refid="EntityDetail0Columns" /> FROM entity_detail_
 		<include refid="listEntityDetail0Where"/>
     </select>
 
@@ -181,7 +181,7 @@
 	<select id="selectListByPage"  resultMap="entityDetail0ResultMap" parameterType="java.util.HashMap">
 		SELECT
 		<include refid="EntityDetail0Columns" />
-		FROM entity_detail
+		FROM entity_detail_
 		<include refid="listEntityDetail0Where"/>
 		<include refid="orderby"/>
 		<include refid="limit"/>
@@ -190,14 +190,14 @@
 	<!--该方法适用于，获取的数据条数小于等于1 如有特殊需要自己实现-->
 	<select id="selectOne" resultMap="entityDetail0ResultMap">
 		SELECT <include refid="EntityDetail0Columns" />
-		FROM entity_detail_0
+		FROM entity_detail_
 		<include refid="listEntityDetail0Where"/>
 		limit 1
 	</select>
 
 	<!--根据条件获取record记录总数-->
 	<select id="getTotleCountByConditions" resultType="int">
-		SELECT count(*) FROM entity_detail_0
+		SELECT count(*) FROM entity_detail_
 		<include refid="listEntityDetail0Where"/>
 	</select>
 
