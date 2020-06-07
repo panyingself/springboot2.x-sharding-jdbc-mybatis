@@ -9,7 +9,7 @@ springboot2.x 集成sharding-jdbc &amp; mybatis项目demo,基于sharding-jdbc ma
 
 download开箱即用.
 
-==========================================【读写分离demo】====================================================
+================【读写分离demo】=============
 【项目名称】: springboot-sharding-jdbc-mybatis-rw
 
 【步骤】:
@@ -27,7 +27,7 @@ download开箱即用.
 
         测试-url list: http://localhost:8080/testList
 
-==========================================【分库分表demo】====================================================
+=================【分库分表demo】============
 
 
 【项目名称】: sharding-jdbc-mybatis-sharding
