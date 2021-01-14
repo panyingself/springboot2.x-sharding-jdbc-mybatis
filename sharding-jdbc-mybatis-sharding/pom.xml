@@ -43,7 +43,7 @@
         <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
         <mybatisplus.version>2.1.4</mybatisplus.version>
         <HikariCP.version>2.7.2</HikariCP.version>
-        <poi.version>3.14</poi.version>
+        <poi.version>4.1.2</poi.version>
         <sharding-jdbc.version>4.0.0</sharding-jdbc.version>
 
 
