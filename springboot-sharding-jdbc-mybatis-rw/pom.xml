@@ -35,7 +35,7 @@
         <guava.version>20.0</guava.version>
         <commons-lang3-version>3.7</commons-lang3-version>
 
-        <springboot.version>2.1.3.RELEASE</springboot.version>
+        <springboot.version>2.5.12</springboot.version>
         <mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
 
         <sharding-sphere.version>2.0.0.M2</sharding-sphere.version>
